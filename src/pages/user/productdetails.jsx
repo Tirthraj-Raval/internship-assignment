@@ -17,6 +17,7 @@ import {
 } from 'react-icons/fa';
 import Navbar from '../../components/user/navbar/navbar';
 import { Helmet } from "react-helmet";
+import Footer from '../../components/user/footer/footer';
 
 const ProductDetail = () => {
   const { productId } = useParams();
@@ -278,6 +279,7 @@ const ProductDetail = () => {
           </motion.div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Search, Cake, Heart, Gift, Sparkles, Music, Utensils, GraduationCap } from 'lucide-react';
 import Navbar from '../../components/user/navbar/navbar';
 import { Helmet } from "react-helmet";
+import Footer from '../../components/user/footer/footer';
 
 const occasions = [
   { id: 1, title: 'Birthdays', Icon: Cake },
@@ -49,6 +50,7 @@ export default function OccasionsPage() {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }
@@ -70,11 +72,13 @@ function SearchInput({ value, onChange }) {
 
 function OccasionCard({ title, Icon, className }) {
   return (
+    <>
     <div
       className={`bg-white p-6 rounded-lg shadow-md text-center ${className}`}
     >
       <Icon className="w-12 h-12 text-pink-500 mx-auto mb-4 animate-pulse" />
       <h3 className="text-lg font-semibold text-gray-700 animate-flipIn">{title}</h3>
     </div>
+    </>
   );
 }
