@@ -28,7 +28,7 @@ const Shop = ({ category }) => {
     const fetchProducts = async () => {
       try {
         // Fetch products from the backend using the 
-        const response = await fetch('https://ecommercebackend-8gx8.onrender.com/get-product');
+        const response = await fetch('https://internship-assignment-amber.vercel.app/https://ecommercebackend-8gx8.onrender.com/get-product');
         const data = await response.json();
         if (data.success) {
           const validProducts = data.products.filter(product =>
