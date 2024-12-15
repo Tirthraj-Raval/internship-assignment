@@ -3,6 +3,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Navbar from "../../components/user/navbar/navbar";
 import { Helmet } from "react-helmet";
+import Footer from "../../components/user/footer/footer";
 
 function About() {
   useEffect(() => {
@@ -111,16 +112,7 @@ function About() {
             </SectionCard>
           </div>
 
-          {/* Image Section */}
-          <div className="mt-16 text-center">
-            <img
-              src="src/assets/bg shop.png"
-              alt="Mera Bestie Team"
-              className="rounded-2xl shadow-2xl mx-auto max-w-4xl h-auto transform transition duration-500 hover:scale-[1.01]"
-            />
-          </div>
-
-          {/* Footer Text */}
+          {/* Exploring Journey */}
           <div className="text-center mt-16 bg-white rounded-2xl p-8 shadow-lg">
             <h2 className="text-4xl font-bold mb-4">
               <span className="bg-gradient-to-r from-pink-500 to-purple-500 text-transparent bg-clip-text">
@@ -131,9 +123,12 @@ function About() {
             <p className="text-gray-600 max-w-2xl mx-auto">
               At Mera Bestie, every interaction is an opportunity to inspire, connect, and grow. We invite you to be part of our story.
             </p>
+            <a href="/contact" className="inline-block mt-2 px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-500 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition duration-500">Contact Us</a>
           </div>
         </div>
       </div>
+      
+      <Footer />
     </>
   );
 }
