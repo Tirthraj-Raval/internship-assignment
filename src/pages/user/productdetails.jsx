@@ -145,7 +145,7 @@ const ProductDetail = () => {
   return (
     <>
       <Helmet>
-        <title>{product.name} | Mera Bestie</title>
+        <title>{product.name} | SaiFashionZone</title>
       </Helmet>
       <Navbar />
       <ToastContainer />

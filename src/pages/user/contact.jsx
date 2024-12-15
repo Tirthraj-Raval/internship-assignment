@@ -54,8 +54,8 @@ const ContactUs = () => {
   return (
     <>
     <Helmet>
-      <title>Contact Us | Mera Bestie</title>
-      <meta name="description" content="Get in touch with Mera Bestie. We're here to help and answer any questions you may have." />
+      <title>Contact Us | SaiFashionZone</title>
+      <meta name="description" content="Get in touch with SaiFashionZone. We're here to help and answer any questions you may have." />
     </Helmet>
     <Navbar className='z-0 mb-auto' />
     <div className="bg-gradient-to-br from-pink-50 to-blue-50 min-h-screen">

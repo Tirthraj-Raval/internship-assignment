@@ -133,7 +133,7 @@ const Shop = ({ category }) => {
   return (
     <>
       <Helmet>
-        <title>Shop | Mera Bestie</title>
+        <title>Shop | SaiFashionZone</title>
       </Helmet>
       <div className="bg-gradient-to-b from-pink-50 to-pink-100 min-h-screen">
         <Navbar />

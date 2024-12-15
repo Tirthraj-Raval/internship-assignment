@@ -79,7 +79,7 @@ const Login = () => {
                   Welcome Back
                 </h2>
                 <p className="text-pink-600 mt-2">
-                  Log in to Mera Bestie
+                  Log in to SaiFashionZone
                 </p>
               </div>
 

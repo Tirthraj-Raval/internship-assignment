@@ -32,8 +32,8 @@ function About() {
   return (
     <>
       <Helmet>
-        <title>About Us | Mera Bestie</title>
-        <meta name="description" content="Learn about Mera Bestie's journey, vision, and mission." />
+        <title>About Us | SaiFashionZone by Raiba</title>
+        <meta name="description" content="Learn about SaiFashionZone's journey, vision, and mission." />
       </Helmet>
       <Navbar />    
       <div className="min-h-screen bg-gradient-to-b from-pink-100 to-pink-50">
@@ -56,7 +56,7 @@ function About() {
               dataAos="fade-right"
             >
               <p className="text-gray-600 mb-4 leading-relaxed">
-                At Mera Bestie, we are more than just a company. We are a community dedicated to creating meaningful connections and providing exceptional experiences.
+                At SaiFashionZone, we are more than just a company. We are a community dedicated to creating meaningful connections and providing exceptional experiences.
               </p>
               <p className="text-gray-600 leading-relaxed">
                 Our journey is driven by passion, innovation, and a commitment to understanding and meeting the unique needs of our clients.
@@ -121,7 +121,7 @@ function About() {
               <span className="text-gray-800 block text-2xl mt-2">Together, We Create Extraordinary Experiences</span>
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              At Mera Bestie, every interaction is an opportunity to inspire, connect, and grow. We invite you to be part of our story.
+              At SaiFashionZone, every interaction is an opportunity to inspire, connect, and grow. We invite you to be part of our story.
             </p>
             <a href="/contact" className="inline-block mt-2 px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-500 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition duration-500">Contact Us</a>
           </div>
