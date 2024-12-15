@@ -119,7 +119,7 @@ const Banner = () => {
         <span style={spanStyles}>{banners[currentIndex].title}</span>
         <h1 style={headingStyles}>{banners[currentIndex].subtitle}</h1>
         <a
-          href="#"
+          href="/shop"
           className="text-center py-2 px-4 font-medium text-white bg-gradient-to-r from-pink-500 to-indigo-500 
             rounded-md shadow-sm hover:from-pink-400 hover:to-indigo-400 transition-all"
           style={buttonStyles}
@@ -136,6 +136,256 @@ const Banner = () => {
     </section>
   );
 };
+
+const products = [
+  {
+    id: 1,
+    name: 'Buttons tweed blazer',
+    price: 59.0,
+    image: '/img/product/product-1.jpg',
+    label: 'New',
+    labelColor: 'red',
+    oldPrice: null,
+    category: 'women',
+  },
+  {
+    id: 2,
+    name: 'Flowy striped skirt',
+    price: 49.0,
+    image: '/img/product/product-2.jpg',
+    label: null,
+    labelColor: null,
+    oldPrice: null,
+    category: 'men',
+  },
+  {
+    id: 3,
+    name: 'Cotton T-Shirt',
+    price: 59.0,
+    image: '/img/product/product-3.jpg',
+    label: 'Out of stock',
+    labelColor: 'gray',
+    oldPrice: null,
+    category: 'accessories',
+  },
+  {
+    id: 4,
+    name: 'Slim striped pocket shirt',
+    price: 59.0,
+    image: '/img/product/product-4.jpg',
+    label: null,
+    labelColor: null,
+    oldPrice: null,
+    category: 'cosmetic',
+  },
+  {
+    id: 5,
+    name: 'Fit micro corduroy shirt',
+    price: 59.0,
+    image: '/img/product/product-5.jpg',
+    label: null,
+    labelColor: null,
+    oldPrice: null,
+    category: 'kid',
+  },
+  {
+    id: 6,
+    name: 'Tropical Kimono',
+    price: 49.0,
+    image: '/img/product/product-6.jpg',
+    label: 'Sale',
+    labelColor: 'orange',
+    oldPrice: 59.0,
+    category: 'women men kid accessories cosmetic',
+  },
+  {
+    id: 7,
+    name: 'Contrasting sunglasses',
+    price: 59.0,
+    image: '/img/product/product-7.jpg',
+    label: null,
+    labelColor: null,
+    oldPrice: null,
+    category: 'women men kid accessories cosmetic',
+  },
+  {
+    id: 8,
+    name: 'Water resistant backpack',
+    price: 49.0,
+    image: '/img/product/product-8.jpg',
+    label: 'Sale',
+    labelColor: 'orange',
+    oldPrice: 59.0,
+    category: 'women men kid accessories cosmetic',
+  },
+];
+
+const ProductSection = () => {
+  return (
+    <section className="product spad flex justify-center">
+  <div className="container">
+    <div className="row">
+      <div className="col-lg-4 col-md-4">
+        <div className="section-title">
+          <h2 className="text-5xl flex justify-center font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-purple-500 via-pink-500 to-indigo-500">
+            New Products
+          </h2>
+          <p className="text-gray-700 mt-4 flex justify-center">
+            Give yourself a stylish look with our latest collection.
+          </p>
+        </div>
+      </div>
+      <div className="col-lg-8 col-md-8">
+        <ul className="filter__controls flex flex-wrap justify-center gap-4">
+          <li className="active cursor-pointer" data-filter="*">All</li>
+          <li data-filter=".women" className="cursor-pointer">Women’s</li>
+          <li data-filter=".men" className="cursor-pointer">Men’s</li>
+          <li data-filter=".kid" className="cursor-pointer">Kid’s</li>
+          <li data-filter=".accessories" className="cursor-pointer">Accessories</li>
+          <li data-filter=".cosmetic" className="cursor-pointer">Cosmetics</li>
+        </ul>
+      </div>
+    </div>
+    <div className="row property__gallery grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
+      {[
+        {
+          image: "/img/product/product-1.jpg",
+          label: "New",
+          title: "Buttons tweed blazer",
+          price: "$59.0",
+          rating: 5,
+          link: "/shop",
+        },
+        {
+          image: "/img/product/product-2.jpg",
+          title: "Flowy striped skirt",
+          price: "$49.0",
+          rating: 5,
+          link: "/shop",
+        },
+        {
+          image: "/img/product/product-3.jpg",
+          label: "Out of stock",
+          labelColor: "gray",
+          title: "Cotton T-Shirt",
+          price: "$59.0",
+          rating: 5,
+          link: "/shop",
+        },
+        {
+          image: "/img/product/product-4.jpg",
+          title: "Slim striped pocket shirt",
+          price: "$59.0",
+          rating: 5,
+          link: "/shop",
+        },
+        {
+          image: "/img/product/product-5.jpg",
+          title: "Fit micro corduroy shirt",
+          price: "$59.0",
+          rating: 5,
+          link: "/shop",
+        },
+        {
+          image: "/img/product/product-6.jpg",
+          label: "Sale",
+          labelColor: "orange",
+          title: "Tropical Kimono",
+          price: "$49.0",
+          originalPrice: "$59.0",
+          rating: 5,
+          link: "/shop",
+        },
+        {
+          image: "/img/product/product-7.jpg",
+          title: "Contrasting sunglasses",
+          price: "$59.0",
+          rating: 5,
+          link: "/shop",
+        },
+        {
+          image: "/img/product/product-8.jpg",
+          label: "Sale",
+          labelColor: "orange",
+          title: "Water resistant backpack",
+          price: "$49.0",
+          originalPrice: "$59.0",
+          rating: 5,
+          link: "/shop",
+        },
+      ].map((product, index) => (
+        <div key={index} className="col-lg-3 col-md-4 col-sm-6 mix" style={{ flex: "1 0 22%" }}>
+          <div className="product__item">
+            <div
+              className="product__item__pic relative"
+              style={{
+                backgroundImage: `url(${product.image})`,
+                width: "100%",
+                height: "200px",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            >
+              {product.label && (
+                <div
+                  className="label"
+                  style={{
+                    position: "absolute",
+                    top: "10px",
+                    left: "10px",
+                    background: product.labelColor || "red",
+                    color: "white",
+                    padding: "5px 10px",
+                    fontSize: "14px",
+                  }}
+                >
+                  {product.label}
+                </div>
+              )}
+            </div>
+            <div className="product__item__text" style={{ padding: "15px" }}>
+              <h6>
+                <a href="#">{product.title}</a>
+              </h6>
+              <div className="rating flex gap-1 text-yellow-500">
+                {Array.from({ length: product.rating }).map((_, starIndex) => (
+                  <i key={starIndex} className="fa fa-star"></i>
+                ))}
+              </div>
+              <div className="product__price">
+                {product.price}{" "}
+                {product.originalPrice && (
+                  <span
+                    style={{
+                      textDecoration: "line-through",
+                      color: "gray",
+                      marginLeft: "5px",
+                    }}
+                  >
+                    {product.originalPrice}
+                  </span>
+                )}
+              </div>
+            </div>
+            <div className="flex justify-center">
+              <a
+                className="text-normal font-medium hover:text-slate-400 transition duration-300 ease-in-out transform hover:scale-105"
+                href={product.link}
+              >
+                SHOP NOW
+              </a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+  );
+};
+
+
 
 
 const DiscountSection = () => {
@@ -776,194 +1026,7 @@ const HomePage = () => {
         <CategoriesSection />
         
 
-<section className="product spad flex justify-center">
-  <div className="container">
-    <div className="row">
-      <div className="col-lg-4 col-md-4">
-        <div className="section-title">
-        <h2 className="text-5xl flex justify-center font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-purple-500 via-pink-500 to-indigo-500">
-          New Products
-        </h2>
-        <p className="text-gray-700 mt-4 flex justify-center">
-          Give yourself a stylish look with our latest collection.
-              </p>
-        </div>
-      </div>
-      <div className="col-lg-8 col-md-8">
-        <ul className="filter__controls">
-          <li className="active" data-filter="*">All</li>
-          <li data-filter=".women">Women’s</li>
-          <li data-filter=".men">Men’s</li>
-          <li data-filter=".kid">Kid’s</li>
-          <li data-filter=".accessories">Accessories</li>
-          <li data-filter=".cosmetic">Cosmetics</li>
-        </ul>
-      </div>
-    </div>
-    <div className="row property__gallery" style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
-      <div className="col-lg-3 col-md-4 col-sm-6 mix women" style={{ flex: '1 0 22%', boxSizing: 'border-box' }}>
-        <div className="product__item">
-          <div className="product__item__pic" style={{ backgroundImage: 'url(/img/product/product-1.jpg)', width: '100%', height: '200px', backgroundSize: 'cover', backgroundPosition: 'center' }}>
-            <div className="label new" style={{ position: 'absolute', top: '10px', left: '10px', background: 'red', color: 'white', padding: '5px 10px', fontSize: '14px' }}>New</div>
-          </div>
-          <div className="product__item__text" style={{ padding: '15px' }}>
-            <h6><a href="#">Buttons tweed blazer</a></h6>
-            <div className="rating">
-              <i className="fa fa-star"></i>
-              <i className="fa fa-star"></i>
-              <i className="fa fa-star"></i>
-              <i className="fa fa-star"></i>
-              <i className="fa fa-star"></i>
-            </div>
-            <div className="product__price">$ 59.0</div>
-          </div>
-          <div className="flex justify-center">
-          <a className="text-normal font-medium hover:text-slate-400 transition duration-300 ease-in-out transform hover:scale-105" href="/shop"> SHOP NOW</a>
-          </div>
-        </div>
-      </div>
-      <div className="col-lg-3 col-md-4 col-sm-6 mix men" style={{ flex: '1 0 22%', boxSizing: 'border-box' }}>
-        <div className="product__item">
-          <div className="product__item__pic" style={{ backgroundImage: 'url(/img/product/product-2.jpg)', width: '100%', height: '200px', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
-          <div className="product__item__text" style={{ padding: '15px' }}>
-            <h6><a href="#">Flowy striped skirt</a></h6>
-            <div className="rating">
-              <i className="fa fa-star"></i>
-              <i className="fa fa-star"></i>
-              <i className="fa fa-star"></i>
-              <i className="fa fa-star"></i>
-              <i className="fa fa-star"></i>
-            </div>
-            <div className="product__price">$ 49.0</div>
-          </div>
-          <div className="flex justify-center">
-          <a className="text-normal font-medium hover:text-slate-400 transition duration-300 ease-in-out transform hover:scale-105" href="/shop"> SHOP NOW</a>
-          </div>
-        </div>
-      </div>
-      <div className="col-lg-3 col-md-4 col-sm-6 mix accessories" style={{ flex: '1 0 22%', boxSizing: 'border-box' }}>
-        <div className="product__item">
-          <div className="product__item__pic" style={{ backgroundImage: 'url(/img/product/product-3.jpg)', width: '100%', height: '200px', backgroundSize: 'cover', backgroundPosition: 'center' }}>
-            <div className="label stockout" style={{ position: 'absolute', top: '10px', left: '10px', background: 'gray', color: 'white', padding: '5px 10px', fontSize: '14px' }}>Out of stock</div>
-          </div>
-          <div className="product__item__text" style={{ padding: '15px' }}>
-            <h6><a href="#">Cotton T-Shirt</a></h6>
-            <div className="rating">
-              <i className="fa fa-star"></i>
-              <i className="fa fa-star"></i>
-              <i className="fa fa-star"></i>
-              <i className="fa fa-star"></i>
-              <i className="fa fa-star"></i>
-            </div>
-            <div className="product__price">$ 59.0</div>
-          </div>
-          <div className="flex justify-center">
-          <a className="text-normal font-medium hover:text-slate-400 transition duration-300 ease-in-out transform hover:scale-105" href="/shop"> SHOP NOW</a>
-          </div>
-        </div>
-      </div>
-      <div className="col-lg-3 col-md-4 col-sm-6 mix cosmetic" style={{ flex: '1 0 22%', boxSizing: 'border-box' }}>
-        <div className="product__item">
-          <div className="product__item__pic" style={{ backgroundImage: 'url(/img/product/product-4.jpg)', width: '100%', height: '200px', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
-          <div className="product__item__text" style={{ padding: '15px' }}>
-            <h6><a href="#">Slim striped pocket shirt</a></h6>
-            <div className="rating">
-              <i className="fa fa-star"></i>
-              <i className="fa fa-star"></i>
-              <i className="fa fa-star"></i>
-              <i className="fa fa-star"></i>
-              <i className="fa fa-star"></i>
-            </div>
-            <div className="product__price">$ 59.0</div>
-          </div>
-          <div className="flex justify-center">
-          <a className="text-normal font-medium hover:text-slate-400 transition duration-300 ease-in-out transform hover:scale-105" href="/shop"> SHOP NOW</a>
-          </div>
-        </div>
-      </div>
-      <div className="col-lg-3 col-md-4 col-sm-6 mix kid" style={{ flex: '1 0 22%', boxSizing: 'border-box' }}>
-        <div className="product__item">
-          <div className="product__item__pic" style={{ backgroundImage: 'url(/img/product/product-5.jpg)', width: '100%', height: '200px', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
-          <div className="product__item__text" style={{ padding: '15px' }}>
-            <h6><a href="#">Fit micro corduroy shirt</a></h6>
-            <div className="rating">
-              <i className="fa fa-star"></i>
-              <i className="fa fa-star"></i>
-              <i className="fa fa-star"></i>
-              <i className="fa fa-star"></i>
-              <i className="fa fa-star"></i>
-            </div>
-            <div className="product__price">$ 59.0</div>
-          </div>
-          <div className="flex justify-center">
-          <a className="text-normal font-medium hover:text-slate-400 transition duration-300 ease-in-out transform hover:scale-105" href="/shop"> SHOP NOW</a>
-          </div>
-        </div>
-      </div>
-      <div className="col-lg-3 col-md-4 col-sm-6 mix women men kid accessories cosmetic" style={{ flex: '1 0 22%', boxSizing: 'border-box' }}>
-        <div className="product__item sale">
-          <div className="product__item__pic" style={{ backgroundImage: 'url(/img/product/product-6.jpg)', width: '100%', height: '200px', backgroundSize: 'cover', backgroundPosition: 'center' }}>
-            <div className="label sale" style={{ position: 'absolute', top: '10px', left: '10px', background: 'orange', color: 'white', padding: '5px 10px', fontSize: '14px' }}>Sale</div>
-          </div>
-          <div className="product__item__text" style={{ padding: '15px' }}>
-            <h6><a href="#">Tropical Kimono</a></h6>
-            <div className="rating">
-              <i className="fa fa-star"></i>
-              <i className="fa fa-star"></i>
-              <i className="fa fa-star"></i>
-              <i className="fa fa-star"></i>
-              <i className="fa fa-star"></i>
-            </div>
-            <div className="product__price">$ 49.0 <span style={{ textDecoration: 'line-through', color: 'gray' }}>$ 59.0</span></div>
-          </div>
-          <div className="flex justify-center">
-          <a className="text-normal font-medium hover:text-slate-400 transition duration-300 ease-in-out transform hover:scale-105" href="/shop"> SHOP NOW</a>
-          </div>
-        </div>
-      </div>
-      <div className="col-lg-3 col-md-4 col-sm-6 mix women men kid accessories cosmetic" style={{ flex: '1 0 22%', boxSizing: 'border-box' }}>
-        <div className="product__item">
-          <div className="product__item__pic" style={{ backgroundImage: 'url(/img/product/product-7.jpg)', width: '100%', height: '200px', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
-          <div className="product__item__text" style={{ padding: '15px' }}>
-            <h6><a href="#">Contrasting sunglasses</a></h6>
-            <div className="rating">
-              <i className="fa fa-star"></i>
-              <i className="fa fa-star"></i>
-              <i className="fa fa-star"></i>
-              <i className="fa fa-star"></i>
-              <i className="fa fa-star"></i>
-            </div>
-            <div className="product__price">$ 59.0</div>
-          </div>
-          <div className="flex justify-center">
-          <a className="text-normal font-medium hover:text-slate-400 transition duration-300 ease-in-out transform hover:scale-105" href="/shop"> SHOP NOW</a>
-          </div>
-        </div>
-      </div>
-      <div className="col-lg-3 col-md-4 col-sm-6 mix women men kid accessories cosmetic" style={{ flex: '1 0 22%', boxSizing: 'border-box' }}>
-        <div className="product__item sale">
-          <div className="product__item__pic" style={{ backgroundImage: 'url(/img/product/product-8.jpg)', width: '100%', height: '200px', backgroundSize: 'cover', backgroundPosition: 'center' }}>
-            <div className="label sale" style={{ position: 'absolute', top: '10px', left: '10px', background: 'orange', color: 'white', padding: '5px 10px', fontSize: '14px' }}>Sale</div>
-          </div>
-          <div className="product__item__text" style={{ padding: '15px' }}>
-            <h6><a href="#">Water resistant backpack</a></h6>
-            <div className="rating">
-              <i className="fa fa-star"></i>
-              <i className="fa fa-star"></i>
-              <i className="fa fa-star"></i>
-              <i className="fa fa-star"></i>
-              <i className="fa fa-star"></i>
-            </div>
-            <div className="product__price">$ 49.0 <span style={{ textDecoration: 'line-through', color: 'gray' }}>$ 59.0</span></div>
-          </div>
-          <div className="flex justify-center">
-          <a className="text-normal font-medium hover:text-slate-400 transition duration-300 ease-in-out transform hover:scale-105" href="/shop"> SHOP NOW</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+        <ProductSection />
 
 
         {/* Product Categories Section */}
