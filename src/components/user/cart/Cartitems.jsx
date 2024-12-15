@@ -309,9 +309,12 @@ const CartItems = () => {
             }}
             className="block"
           >
-            <button className="w-full bg-pink-500 text-white py-2 rounded-md hover:bg-pink-600">
+            <div className="flex justify-center">
+            <button className="w-60 bg-pink-500 text-white py-2 rounded-md hover:bg-pink-600">
               Proceed to Checkout
             </button>
+
+            </div>
           </Link>
         </div>
       </div>
