@@ -55,15 +55,17 @@ const Banner = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex(prevIndex => (prevIndex + 1) % banners.length);
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % banners.length);
     }, 5000); // Change banner every 5 seconds
 
     return () => clearInterval(interval); // Cleanup on component unmount
   }, []);
 
-  // Inline styles
+  // Define responsive styles
+  const isMobile = window.innerWidth <= 768;
+
   const bannerStyles = {
-    height: '500px',
+    height: isMobile ? '300px' : '500px',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundImage: `url(${banners[currentIndex].img})`,
@@ -72,54 +74,55 @@ const Banner = () => {
 
   const textStyles = {
     position: 'absolute',
-    top: '50%',
+    top: isMobile ? '40%' : '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
     textAlign: 'center',
     color: 'white',
+    width: isMobile ? '90%' : 'auto',
   };
 
   const spanStyles = {
-    fontSize: '18px',
+    fontSize: isMobile ? '14px' : '18px',
     color: '#ca1515',
     textTransform: 'uppercase',
   };
 
   const headingStyles = {
-    fontSize: '80px',
+    fontSize: isMobile ? '36px' : '80px',
     color: '#111111',
     fontFamily: '"Cookie", cursive',
     marginBottom: '15px',
   };
 
-  
+  const buttonStyles = {
+    fontSize: isMobile ? '1rem' : '1.2rem',
+    padding: isMobile ? '10px 20px' : '12px 24px',
+  };
 
   const carouselStyles = {
     textAlign: 'center',
-    padding: '150px 0 0',
+    padding: isMobile ? '80px 0 0' : '150px 0 0',
   };
 
   const owlDotsStyles = {
     position: 'absolute',
     left: '0',
-    top: '430px',
+    top: isMobile ? '260px' : '430px',
     width: '100%',
     textAlign: 'center',
   };
 
- 
   return (
     <section style={bannerStyles} className="mb-10">
       <div style={textStyles}>
         <span style={spanStyles}>{banners[currentIndex].title}</span>
         <h1 style={headingStyles}>{banners[currentIndex].subtitle}</h1>
-        <a 
-          href="#" 
+        <a
+          href="#"
           className="text-center py-2 px-4 font-medium text-white bg-gradient-to-r from-pink-500 to-indigo-500 
             rounded-md shadow-sm hover:from-pink-400 hover:to-indigo-400 transition-all"
-          style={{"font-size": "1.2rem"}}
-          onMouseOver={(e) => e.target.style.backgroundColor = '#ff63b1'} 
-          onMouseOut={(e) => e.target.style.backgroundColor = '#ff1493'}
+          style={buttonStyles}
         >
           Shop Now
         </a>
@@ -132,7 +135,8 @@ const Banner = () => {
       </div>
     </section>
   );
-}
+};
+
 
 const DiscountSection = () => {
   // Define the fixed target date
@@ -155,6 +159,14 @@ const DiscountSection = () => {
   };
 
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    handleResize(); // Set initial state
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -165,34 +177,48 @@ const DiscountSection = () => {
   }, []);
 
   return (
-    <section style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }} className="mb-20">
+    <section style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: isMobile ? 'column' : 'row' }} className="mb-20">
       <div className="container" style={{ width: '100%' }}>
-        <div className="row" style={{ display: 'flex', flexDirection: 'row' }}>
-          <div className="col-lg-6 p-0" style={{ flex: 1 }}>
+        <div className="row" style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row' }}>
+          <div className="col-lg-6 p-0" style={{ flex: 1, textAlign: isMobile ? 'center' : 'left' }}>
             <div className="discount__pic">
               {/* Add an image here if needed */}
             </div>
           </div>
-          <div className="col-lg-6 p-0" style={{ flex: 1, background: '#f4f4f4', padding: '75px 90px 50px', textAlign: 'center' }}>
+          <div
+            className="col-lg-6 p-0"
+            style={{
+              flex: 1,
+              background: isMobile ? '#ffffff' : '#f4f4f4',
+              padding: isMobile ? '40px 20px' : '75px 90px 50px',
+              textAlign: 'center',
+            }}
+          >
             <div className="discount__text">
-              <div style={{ position: 'relative', marginBottom: '60px', textAlign: 'center' }}>
+              <div
+                style={{
+                  position: 'relative',
+                  marginBottom: isMobile ? '40px' : '60px',
+                  textAlign: 'center',
+                }}
+              >
                 {/* The grey circle */}
                 <div
                   style={{
                     position: 'absolute',
-                    left: '50%',
-                    top: '-38px',
-                    height: '183px',
-                    width: '183px',
+                    left: isMobile ? '50%' : '50%',
+                    top: isMobile ? '-30px' : '-38px',
+                    height: isMobile ? '120px' : '183px',
+                    width: isMobile ? '120px' : '183px',
                     background: '#e0e0e0',
                     content: "''",
                     borderRadius: '50%',
                     zIndex: '-1',
-                    marginLeft: '-91.5px',
+                    marginLeft: isMobile ? '-60px' : '-91.5px',
                   }}
                 />
                 <span style={{ fontSize: '12px', color: '#111111', fontWeight: '500', textTransform: 'uppercase' }}>Discount</span>
-                <h2 style={{ fontSize: '60px', color: '#ca1515', fontFamily: '"Cookie", cursive', lineHeight: '46px', marginBottom: '10px' }}>
+                <h2 style={{ fontSize: isMobile ? '40px' : '60px', color: '#ca1515', fontFamily: '"Cookie", cursive', lineHeight: '46px', marginBottom: '10px' }}>
                   Summer 2024
                 </h2>
                 <h5 style={{ color: '#ca1515', fontWeight: '700' }}>
@@ -200,19 +226,19 @@ const DiscountSection = () => {
                 </h5>
               </div>
               <div id="countdown-time" style={{ textAlign: 'center', marginBottom: '10px' }}>
-                <div style={{ marginBottom: '15px', float: 'left', width: '25%' }}>
+                <div style={{ marginBottom: '15px', float: isMobile ? 'none' : 'left', width: isMobile ? 'auto' : '25%' }}>
                   <span style={{ fontSize: '30px', fontWeight: '600', color: '#111111' }}>{timeLeft.days}</span>
                   <p style={{ color: '#111111', marginBottom: '0', fontWeight: '500' }}>Days</p>
                 </div>
-                <div style={{ marginBottom: '15px', float: 'left', width: '25%' }}>
+                <div style={{ marginBottom: '15px', float: isMobile ? 'none' : 'left', width: isMobile ? 'auto' : '25%' }}>
                   <span style={{ fontSize: '30px', fontWeight: '600', color: '#111111' }}>{timeLeft.hours}</span>
                   <p style={{ color: '#111111', marginBottom: '0', fontWeight: '500' }}>Hours</p>
                 </div>
-                <div style={{ marginBottom: '15px', float: 'left', width: '25%' }}>
+                <div style={{ marginBottom: '15px', float: isMobile ? 'none' : 'left', width: isMobile ? 'auto' : '25%' }}>
                   <span style={{ fontSize: '30px', fontWeight: '600', color: '#111111' }}>{timeLeft.minutes}</span>
                   <p style={{ color: '#111111', marginBottom: '0', fontWeight: '500' }}>Minutes</p>
                 </div>
-                <div style={{ marginBottom: '15px', float: 'left', width: '25%' }}>
+                <div style={{ marginBottom: '15px', float: isMobile ? 'none' : 'left', width: isMobile ? 'auto' : '25%' }}>
                   <span style={{ fontSize: '30px', fontWeight: '600', color: '#111111' }}>{timeLeft.seconds}</span>
                   <p style={{ color: '#111111', marginBottom: '0', fontWeight: '500' }}>Seconds</p>
                 </div>
@@ -238,9 +264,6 @@ const DiscountSection = () => {
     </section>
   );
 };
-
-
-
 
 
 const HomePage = () => {

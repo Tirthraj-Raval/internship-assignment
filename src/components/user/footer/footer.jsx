@@ -34,7 +34,7 @@ const Footer = () => {
       <div className="flex flex-col items-center md:items-start">
         <h4 className="text-3xl font-extrabold text-pink-800 mb-4">SaiFashionZone by Raiba</h4>
         <p className="text-gray-600 mb-4 text-center md:text-left">
-          Your one-stop destination for thoughtful and unique gifts.
+          Your one-stop destination for trending fashion gifts.
         </p>
         <div className="flex space-x-6 text-3xl mt-4">
           <FaFacebook className="text-pink-600 hover:text-pink-800 transition cursor-pointer" />
