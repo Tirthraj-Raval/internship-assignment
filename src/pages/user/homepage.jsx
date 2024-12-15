@@ -939,7 +939,7 @@ const HomePage = () => {
           name="description"
           content="Discover unique gifts and thoughtful collections for every occasion."
         />
-        <meta name="description" content="Ashion Template" />
+        <meta name="description" content="SaiFashionZone by Raiba" />
     <meta name="keywords" content="Ashion, unica, creative, html" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
