@@ -1,26 +1,13 @@
-/*  ---------------------------------------------------
-Template Name: Ashion
-Description: Ashion ecommerce template
-Author: Colorib
-Author URI: https://colorlib.com/
-Version: 1.0
-Created: Colorib
----------------------------------------------------------  */
-
 'use strict';
 
 (function ($) {
 
-    /*------------------
-        Preloader
-    --------------------*/
+
     $(window).on('load', function () {
         $(".loader").fadeOut();
         $("#preloder").delay(200).fadeOut("slow");
 
-        /*------------------
-            Product filter
-        --------------------*/
+
         $('.filter__controls li').on('click', function () {
             $('.filter__controls li').removeClass('active');
             $(this).addClass('active');
@@ -31,9 +18,7 @@ Created: Colorib
         }
     });
 
-    /*------------------
-        Background Set
-    --------------------*/
+
     $('.set-bg').each(function () {
         var bg = $(this).data('setbg');
         $(this).css('background-image', 'url(' + bg + ')');
@@ -61,17 +46,13 @@ Created: Colorib
         $(".offcanvas-menu-overlay").removeClass("active");
     });
 
-    /*------------------
-		Navigation
-	--------------------*/
+
     $(".header__menu").slicknav({
         prependTo: '#mobile-menu-wrap',
         allowParentLinks: true
     });
 
-    /*------------------
-        Accordin Active
-    --------------------*/
+   
     $('.collapse').on('shown.bs.collapse', function () {
         $(this).prev().addClass('active');
     });
@@ -80,9 +61,6 @@ Created: Colorib
         $(this).prev().removeClass('active');
     });
 
-    /*--------------------------
-        Banner Slider
-    ----------------------------*/
     $(".banner__slider").owlCarousel({
         loop: true,
         margin: 0,
@@ -93,9 +71,7 @@ Created: Colorib
         autoplay: true
     });
 
-    /*--------------------------
-        Product Details Slider
-    ----------------------------*/
+
     $(".product__details__pic__slider").owlCarousel({
         loop: false,
         margin: 0,
@@ -124,9 +100,7 @@ Created: Colorib
     }
 
 
-    /*------------------
-		Magnific
-    --------------------*/
+ 
     $('.image-popup').magnificPopup({
         type: 'image'
     });
@@ -142,10 +116,7 @@ Created: Colorib
         horizrailenabled: false
     });
 
-    /*------------------
-        CountDown
-    --------------------*/
-    // For demo preview start
+ 
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -159,20 +130,13 @@ Created: Colorib
         mm = String(mm).padStart(2, '0');
     }
     var timerdate = mm + '/' + dd + '/' + yyyy;
-    // For demo preview end
 
-
-    // Uncomment below and use your date //
-
-    /* var timerdate = "2020/12/30" */
+    var timerdate = "2024/12/15" 
 
 	$("#countdown-time").countdown(timerdate, function(event) {
         $(this).html(event.strftime("<div class='countdown__item'><span>%D</span> <p>Day</p> </div>" + "<div class='countdown__item'><span>%H</span> <p>Hour</p> </div>" + "<div class='countdown__item'><span>%M</span> <p>Min</p> </div>" + "<div class='countdown__item'><span>%S</span> <p>Sec</p> </div>"));
     });
 
-    /*-------------------
-		Range Slider
-	--------------------- */
 	var rangeSlider = $(".price-range"),
     minamount = $("#minamount"),
     maxamount = $("#maxamount"),
@@ -191,9 +155,6 @@ Created: Colorib
     minamount.val('$' + rangeSlider.slider("values", 0));
     maxamount.val('$' + rangeSlider.slider("values", 1));
 
-    /*------------------
-		Single Product
-	--------------------*/
 	$('.product__thumb .pt').on('click', function(){
 		var imgurl = $(this).data('imgbigurl');
 		var bigImg = $('.product__big__img').attr('src');
@@ -202,9 +163,7 @@ Created: Colorib
 		}
     });
     
-    /*-------------------
-		Quantity change
-	--------------------- */
+ 
     var proQty = $('.pro-qty');
 	proQty.prepend('<span class="dec qtybtn">-</span>');
 	proQty.append('<span class="inc qtybtn">+</span>');
@@ -224,9 +183,7 @@ Created: Colorib
 		$button.parent().find('input').val(newVal);
     });
     
-    /*-------------------
-		Radio Btn
-	--------------------- */
+  
     $(".size__btn label").on('click', function () {
         $(".size__btn label").removeClass('active');
         $(this).addClass('active');

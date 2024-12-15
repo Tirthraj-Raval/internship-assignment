@@ -32,6 +32,217 @@ const ScrollProgress = () => {
   );
 };
 
+const Banner = () => {
+  const banners = [
+    {
+      img: 'img/banner/banner-1.jpg',
+      title: 'The Chloe Collection',
+      subtitle: 'The Project Jacket',
+    },
+    {
+      img: 'img/banner/banner-2.jpg',
+      title: 'The Summer Collection',
+      subtitle: 'Tropical Vibes',
+    },
+    {
+      img: 'img/banner/banner-3.jpg',
+      title: 'The Winter Collection',
+      subtitle: 'Cozy Wear for Cold Days',
+    },
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex(prevIndex => (prevIndex + 1) % banners.length);
+    }, 5000); // Change banner every 5 seconds
+
+    return () => clearInterval(interval); // Cleanup on component unmount
+  }, []);
+
+  // Inline styles
+  const bannerStyles = {
+    height: '500px',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundImage: `url(${banners[currentIndex].img})`,
+    position: 'relative',
+  };
+
+  const textStyles = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    textAlign: 'center',
+    color: 'white',
+  };
+
+  const spanStyles = {
+    fontSize: '18px',
+    color: '#ca1515',
+    textTransform: 'uppercase',
+  };
+
+  const headingStyles = {
+    fontSize: '80px',
+    color: '#111111',
+    fontFamily: '"Cookie", cursive',
+    marginBottom: '15px',
+  };
+
+  
+
+  const carouselStyles = {
+    textAlign: 'center',
+    padding: '150px 0 0',
+  };
+
+  const owlDotsStyles = {
+    position: 'absolute',
+    left: '0',
+    top: '430px',
+    width: '100%',
+    textAlign: 'center',
+  };
+
+ 
+  return (
+    <section style={bannerStyles} className="mb-10">
+      <div style={textStyles}>
+        <span style={spanStyles}>{banners[currentIndex].title}</span>
+        <h1 style={headingStyles}>{banners[currentIndex].subtitle}</h1>
+        <a 
+          href="#" 
+          className="text-center py-2 px-4 font-medium text-white bg-gradient-to-r from-pink-500 to-indigo-500 
+            rounded-md shadow-sm hover:from-pink-400 hover:to-indigo-400 transition-all"
+          style={{"font-size": "1.2rem"}}
+          onMouseOver={(e) => e.target.style.backgroundColor = '#ff63b1'} 
+          onMouseOut={(e) => e.target.style.backgroundColor = '#ff1493'}
+        >
+          Shop Now
+        </a>
+      </div>
+
+      <div style={carouselStyles} className="banner__slider owl-carousel">
+        <div style={owlDotsStyles} className="owl-dots">
+          {/* Dots are managed by Owl Carousel */}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const DiscountSection = () => {
+  // Define the fixed target date
+  const targetDate = new Date(new Date().getTime() + 30 * 24 * 60 * 60 * 1000 + 18 * 60 * 60 * 1000); // 30 days, 18 hours from now
+
+  const calculateTimeLeft = () => {
+    const now = new Date();
+    const difference = targetDate - now;
+
+    if (difference <= 0) {
+      return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+    }
+
+    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+    return { days, hours, minutes, seconds };
+  };
+
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(calculateTimeLeft());
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <section style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }} className="mb-20">
+      <div className="container" style={{ width: '100%' }}>
+        <div className="row" style={{ display: 'flex', flexDirection: 'row' }}>
+          <div className="col-lg-6 p-0" style={{ flex: 1 }}>
+            <div className="discount__pic">
+              {/* Add an image here if needed */}
+            </div>
+          </div>
+          <div className="col-lg-6 p-0" style={{ flex: 1, background: '#f4f4f4', padding: '75px 90px 50px', textAlign: 'center' }}>
+            <div className="discount__text">
+              <div style={{ position: 'relative', marginBottom: '60px', textAlign: 'center' }}>
+                {/* The grey circle */}
+                <div
+                  style={{
+                    position: 'absolute',
+                    left: '50%',
+                    top: '-38px',
+                    height: '183px',
+                    width: '183px',
+                    background: '#e0e0e0',
+                    content: "''",
+                    borderRadius: '50%',
+                    zIndex: '-1',
+                    marginLeft: '-91.5px',
+                  }}
+                />
+                <span style={{ fontSize: '12px', color: '#111111', fontWeight: '500', textTransform: 'uppercase' }}>Discount</span>
+                <h2 style={{ fontSize: '60px', color: '#ca1515', fontFamily: '"Cookie", cursive', lineHeight: '46px', marginBottom: '10px' }}>
+                  Summer 2024
+                </h2>
+                <h5 style={{ color: '#ca1515', fontWeight: '700' }}>
+                  <span style={{ fontSize: '14px', color: '#111111', marginRight: '4px' }}>Sale</span> 50%
+                </h5>
+              </div>
+              <div id="countdown-time" style={{ textAlign: 'center', marginBottom: '10px' }}>
+                <div style={{ marginBottom: '15px', float: 'left', width: '25%' }}>
+                  <span style={{ fontSize: '30px', fontWeight: '600', color: '#111111' }}>{timeLeft.days}</span>
+                  <p style={{ color: '#111111', marginBottom: '0', fontWeight: '500' }}>Days</p>
+                </div>
+                <div style={{ marginBottom: '15px', float: 'left', width: '25%' }}>
+                  <span style={{ fontSize: '30px', fontWeight: '600', color: '#111111' }}>{timeLeft.hours}</span>
+                  <p style={{ color: '#111111', marginBottom: '0', fontWeight: '500' }}>Hours</p>
+                </div>
+                <div style={{ marginBottom: '15px', float: 'left', width: '25%' }}>
+                  <span style={{ fontSize: '30px', fontWeight: '600', color: '#111111' }}>{timeLeft.minutes}</span>
+                  <p style={{ color: '#111111', marginBottom: '0', fontWeight: '500' }}>Minutes</p>
+                </div>
+                <div style={{ marginBottom: '15px', float: 'left', width: '25%' }}>
+                  <span style={{ fontSize: '30px', fontWeight: '600', color: '#111111' }}>{timeLeft.seconds}</span>
+                  <p style={{ color: '#111111', marginBottom: '0', fontWeight: '500' }}>Seconds</p>
+                </div>
+              </div>
+              <a
+                style={{
+                  fontSize: '14px',
+                  color: '#111111',
+                  textTransform: 'uppercase',
+                  fontWeight: '700',
+                  position: 'relative',
+                  padding: '0 0 3px',
+                  display: 'inline-block',
+                }}
+                href="#"
+              >
+                Shop now
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+
+
+
+
 const HomePage = () => {
   useEffect(() => {
     AOS.init({
@@ -781,7 +992,9 @@ const HomePage = () => {
         </section>
         
        
+              <Banner />
 
+              <DiscountSection />
       
   {/* Vision Section with Modern Overlay Design */}
     <section className="relative min-h-[80vh] flex items-center" data-aos="fade-up">
@@ -835,64 +1048,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-
-// <!-- Categories Section Begin -->
-{/* <section class="categories">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-6 p-0">
-                <div class="categories__item categories__large__item set-bg"
-                data-setbg="img/categories/category-1.jpg">
-                <div class="categories__text">
-                    <h1>Women’s fashion</h1>
-                    <p>Sitamet, consectetur adipiscing elit, sed do eiusmod tempor incidid-unt labore
-                    edolore magna aliquapendisse ultrices gravida.</p>
-                    <a href="#">Shop now</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-6">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6 p-0">
-                    <div class="categories__item set-bg" data-setbg="img/categories/category-2.jpg">
-                        <div class="categories__text">
-                            <h4>Men’s fashion</h4>
-                            <p>358 items</p>
-                            <a href="#">Shop now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 p-0">
-                    <div class="categories__item set-bg" data-setbg="img/categories/category-3.jpg">
-                        <div class="categories__text">
-                            <h4>Kid’s fashion</h4>
-                            <p>273 items</p>
-                            <a href="#">Shop now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 p-0">
-                    <div class="categories__item set-bg" data-setbg="img/categories/category-4.jpg">
-                        <div class="categories__text">
-                            <h4>Cosmetics</h4>
-                            <p>159 items</p>
-                            <a href="#">Shop now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 p-0">
-                    <div class="categories__item set-bg" data-setbg="img/categories/category-5.jpg">
-                        <div class="categories__text">
-                            <h4>Accessories</h4>
-                            <p>792 items</p>
-                            <a href="#">Shop now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section> */}
-// <!-- Categories Section End -->
-
