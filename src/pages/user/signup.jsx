@@ -4,10 +4,12 @@ import { useAuth } from '../../context/AuthContext';
 import Navbar from "../../components/user/navbar/navbar";
 import { motion } from 'framer-motion';
 import { Helmet } from "react-helmet";
+import Footer from "../../components/user/footer/footer";
+import {GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 
 export default function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
-  const { signup } = useAuth();
+  const { signup, googleAuth } = useAuth();
   const [error, setError] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -29,10 +31,36 @@ export default function SignUp() {
     }
   };
 
+  // Handle Google login success
+  const handleGoogleSuccess = async (credentialResponse) => {
+    try {
+      const { credential } = credentialResponse; // Extract tokenId (credential)
+      console.log('Google singup credential:', credential);
+      // Call the googleAuth function with the tokenId
+      await googleAuth({ tokenId: credential });
+  
+      // If googleAuth is successful, redirect the user
+      alert('Google signup successful');
+      window.location.href = '/';
+    } catch (error) {
+      console.error('Google signup failed:', error);
+      alert('Google signup failed. Please try again.');
+    }
+  };
+  
+
+  // Handle Google login failure
+  const handleGoogleFailure = (error) => {
+    console.error('Google signup failed:', error);
+    alert('Google signup failed. Please try again.');
+  };
+
+
   return (
+    <GoogleOAuthProvider clientId="888965192911-v1tr02eq0iqnjt8k4dftmnuj4063kuid.apps.googleusercontent.com">
     <>
       <Helmet>
-        <title>Sign Up | Mera Bestie</title>
+        <title>Sign Up | SaiFashionZone</title>
       </Helmet>
       <div className="min-h-screen bg-gradient-to-br from-pink-50 to-pink-100 flex items-center justify-center p-4">
         <div className="fixed top-0 left-0 w-full z-50">
@@ -40,7 +68,7 @@ export default function SignUp() {
         </div>
         
         <motion.div 
-          className="w-full max-w-md bg-white shadow-2xl rounded-2xl overflow-hidden mt-auto"
+          className="w-full max-w-md bg-white shadow-2xl rounded-2xl overflow-hidden mt-32 mb-20"
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ 
@@ -55,7 +83,7 @@ export default function SignUp() {
                 Create Your Account
               </h2>
               <p className="text-pink-600 mt-2">
-                Join Mera Bestie
+                Explore the world of fashion with SaiFashionZone
               </p>
             </div>
 
@@ -158,6 +186,21 @@ export default function SignUp() {
               </motion.button>
             </form>
 
+            <div className="mt-6 flex items-center justify-center space-x-4">
+                <hr className="w-1/4 border border-gray-200" />
+                <p className="text-gray-400">Or continue with</p>
+                <hr className="w-1/4 border border-gray-200" />
+              </div>
+
+              {/* Google Login Button */}
+              <div className="mt-4 flex justify-center">
+                <GoogleLogin
+                  onSuccess={handleGoogleSuccess}
+                  onError={handleGoogleFailure}
+                  useOneTap
+                />
+              </div>
+
             <div className="mt-6 text-center">
               <p className="text-gray-600 text-sm">
                 Already have an account? 
@@ -169,6 +212,8 @@ export default function SignUp() {
           </div>
         </motion.div>
       </div>
+      <Footer />
     </>
+    </GoogleOAuthProvider>
   );
 }
