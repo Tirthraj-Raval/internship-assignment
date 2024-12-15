@@ -3,6 +3,8 @@ import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaPaperPlane } from "react-icons/f
 import { motion } from "framer-motion";
 import Navbar from "../../components/user/navbar/navbar";
 import { Helmet } from "react-helmet";
+import Footer from "../../components/user/footer/footer";
+import VideoComponent from "./VideoComponent";
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -169,6 +171,21 @@ const ContactUs = () => {
                 Send Message
               </motion.button>
             </form>
+            {/* Success Message */}
+              <div className="mt-6 space-y-6">
+                {/* Video Component Wrapper */}
+                <div className="overflow-hidden rounded-2xl shadow-lg">
+                  <VideoComponent />
+                </div>
+                
+                {/* Success Message Wrapper */}
+                <div className="overflow-hidden rounded-2xl shadow-lg p-4 bg-gray-50">
+                  <p className="text-center text-gray-600 text-lg">
+                    Your message is important to us!
+                  </p>
+                </div>
+              </div>
+
           </motion.div>
 
           {/* Contact Information */}
@@ -248,6 +265,7 @@ const ContactUs = () => {
         </motion.div>
       </div>
     </div>
+    <Footer />
     </>
   );
 };
