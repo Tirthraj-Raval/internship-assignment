@@ -77,9 +77,6 @@ ol {
 	margin: 0;
 }
 
-/*---------------------
-  Helper CSS
------------------------*/
 
 .section-title {
 	margin-bottom: 45px;
@@ -127,7 +124,6 @@ ol {
 	color: #fff;
 }
 
-/* buttons */
 
 .primary-btn {
 	display: inline-block;
@@ -151,7 +147,7 @@ ol {
 	border-radius: 50px;
 }
 
-/* Preloder */
+
 
 #preloder {
 	position: fixed;
@@ -3115,7 +3111,7 @@ ol {
 	width: 100%;
 }
 
-/*--------------------------------- Responsive Media Quaries -----------------------------*/
+
 
 @media only screen and (min-width: 1600px) and (max-width: 1900px) {
 	.header {
@@ -3138,7 +3134,7 @@ ol {
 	}
 }
 
-/* Medium Device = 1200px */
+
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
 	.header__menu ul li {
@@ -3158,7 +3154,7 @@ ol {
 	}
 }
 
-/* Tablet Device = 768px */
+
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
 	.filter__controls li {
@@ -3363,7 +3359,7 @@ ol {
 	}
 }
 
-/* Wide Mobile = 480px */
+
 
 @media only screen and (max-width: 767px) {
 	.canvas__open {
@@ -3590,7 +3586,7 @@ ol {
 	}
 }
 
-/* Small Device = 320px */
+
 
 @media only screen and (max-width: 479px) {
 	.categories__item.categories__large__item {
@@ -3688,12 +3684,12 @@ ol {
 
 .categories__text h1 {
     font-family: 'Cookie', cursive;
-    color: #333; /* Replace with actual $heading-color */
+    color: #333; 
     margin-bottom: 5px;
 }
 
 .categories__text h4 {
-    color: #333; /* Replace with actual $heading-color */
+    color: #333; 
     font-weight: 700;
 }
 
@@ -3703,7 +3699,7 @@ ol {
 
 .categories__text a {
     font-size: 14px;
-    color: #333; /* Replace with actual $heading-color */
+    color: #333; 
     text-transform: uppercase;
     font-weight: 600;
     position: relative;
@@ -3717,7 +3713,7 @@ ol {
     bottom: 0;
     height: 2px;
     width: 100%;
-    background: #007bff; /* Replace with actual $primary-color */
+    background: #007bff; 
     content: "";
 }
 

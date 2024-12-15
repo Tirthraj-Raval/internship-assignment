@@ -47,7 +47,7 @@ const Banner = () => {
     {
       img: 'img/banner/banner-3.jpg',
       title: 'The Winter Collection',
-      subtitle: 'Cozy Wear for Cold Days',
+      subtitle: 'Cozy for Cold Days',
     },
   ];
 
@@ -56,9 +56,9 @@ const Banner = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % banners.length);
-    }, 5000); // Change banner every 5 seconds
+    }, 5000); 
 
-    return () => clearInterval(interval); // Cleanup on component unmount
+    return () => clearInterval(interval); 
   }, []);
 
   // Define responsive styles
