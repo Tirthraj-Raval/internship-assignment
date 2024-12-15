@@ -126,7 +126,7 @@ const ProfessionalNavbar = () => {
               to="/HomePage" 
               className="text-2xl flex items-center hover:opacity-80 transition"
             >
-              <span className="font-['Bodoni_MT'] font-bold text-2xl text-pink-600">MERA Bestie</span>
+              <span className="font-['Bodoni_MT'] font-bold text-2xl text-pink-600">SaiFashionZone</span>
             </Link>
 
             {/* Desktop Navigation Menu */}
